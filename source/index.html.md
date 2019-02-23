@@ -38,7 +38,7 @@ We have language bindings in Shell, PHP, and JavaScript! You can view code examp
 
 ```
 
-Vtion uses `appid` and `appkey`  to allow access to the search API. You can request for a your application Id and application Key sending a mail [info@vtion.ai](maito:info@vtion.ai).
+Vtion uses `appid` and `appkey`  to allow access to the search API. You can request for your application Id and application Key by sending a mail to [info@vtion.ai](maito:info@vtion.ai).
 Vtion expects `appid` and `appkey` to be included in all API requests to the server in a header that looks like the following:
 
 `appid: example-app-id`
