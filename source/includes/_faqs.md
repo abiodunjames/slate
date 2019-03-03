@@ -22,9 +22,5 @@ We have a clear and defined steps for any customers to start using Vtion API on 
 Send us a registration request at  info@vtion.ai
 You will be provided with `appid` and `appkey` that you can use to access Vtion api
 
-**Do you have a developer documentation?**
-
-Yes, we have a comprehensive documentation for [developers here](http://api.vtion.ai/docs)
-
 **How can I register?**
 At the moment, registration is only done by sending us a request at info@vtion.ai
