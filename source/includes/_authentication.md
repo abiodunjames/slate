@@ -3,6 +3,14 @@
 
 > Make sure to replace `example-app-id` with your appid and `example-app-key` with your appkey.
 
+Vtion uses `appid` and `appkey`  to allow access to the search API. You can request for your application Id and application Key by sending a mail to [info@vtion.ai](maito:info@vtion.ai).
+Vtion expects `appid` and `appkey` to be included in all API requests to the server in a header that looks like the following:
+
+`appid: example-app-id`
+`appkey: example-app-key`
+
+# Searching Product feed
+
 ```shell
 curl --location --request POST "https://api.vtion.ai/v1/search" \
   --header "appid: example-app-id" \
@@ -39,14 +47,6 @@ axios.post('https://api.vtion.ai/v1/search', {
     console.log(error);
 })
 ```
-
-Vtion uses `appid` and `appkey`  to allow access to the search API. You can request for your application Id and application Key by sending a mail to [info@vtion.ai](maito:info@vtion.ai).
-Vtion expects `appid` and `appkey` to be included in all API requests to the server in a header that looks like the following:
-
-`appid: example-app-id`
-`appkey: example-app-key`
-
-## Search product feed
 
 > The search api returns a JSON structured response like this:
 
