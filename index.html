@@ -232,33 +232,42 @@
               </ul>
           </li>
           <li>
+            <a href="#product-feed" class="toc-h1 toc-link" data-title="Product feed">Product feed</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#supported-format" class="toc-h2 toc-link" data-title="Supported Format">Supported Format</a>
+                  </li>
+                  <li>
+                    <a href="#product-information-to-provide" class="toc-h2 toc-link" data-title="Product Information to provide">Product Information to provide</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#faqs" class="toc-h1 toc-link" data-title="FAQs">FAQs</a>
           </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='mailto:info@vtion.ai'>Request for a Developer keys</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
+<blockquote>
+<p>API Endpoint</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://api.vtion.ai/v1
+</code></pre>
 <p>Welcome to the Vtion API! Vtion powers visual search for eCommerce and retail. Using Vtion proprietary AI technology,
  we enable retailers with image recognition solutions from a camera button to image to text technology, in order to create a more engaged, 
  interactive and data-driven omnichannel experience.</p>
 
 <p>We have language bindings in Shell, PHP, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='authentication'>Authentication</h1><pre class="highlight shell tab-shell"><code>
-</code></pre><pre class="highlight php tab-php"><code>
-</code></pre><pre class="highlight javascript tab-javascript"><code>
-</code></pre>
-<p>Vtion uses <code>appid</code> and <code>appkey</code>  to allow access to the search API. You can request for a your application Id and application Key sending a mail <a href="maito:info@vtion.ai">info@vtion.ai</a>.
-Vtion expects <code>appid</code> and <code>appkey</code> to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>appid: example-app-id</code>
-<code>appkey: example-app-key</code></p>
-<h2 id='search-product-feed'>Search product feed</h2>
+<h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>Make sure to replace <code>example-app-id</code> with your appid and <code>example-app-key</code> with your appkey.</p>
 </blockquote>
@@ -276,20 +285,30 @@ Vtion expects <code>appid</code> and <code>appkey</code> to be included in all A
     <span class="p">)</span>
 <span class="p">));</span>
 <span class="cp">?&gt;</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="nx">vtion</span> <span class="nx">from</span> <span class="s1">'@abiodunjames/vtionai'</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">search</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">vtion</span><span class="p">(</span><span class="s1">'example-app-id'</span><span class="p">,</span> <span class="s1">'example-app-key'</span><span class="p">);</span>
-<span class="nx">search</span><span class="p">.</span><span class="nx">getClient</span><span class="p">().</span><span class="nx">search</span><span class="p">(</span><span class="s1">'your-base-64-image'</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-    <span class="p">});</span>
-</code></pre>
-<p>Searches for similar products within the product feed based on an image provided that is not  within the product feed. The results are ordered by how similar they are to the image.</p>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s1">'axios'</span><span class="p">;</span>
 
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'https://api.vtion.ai/v1/search'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">image</span><span class="p">:</span> <span class="nx">base64Image</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">appid</span><span class="p">:</span> <span class="s1">'example-app-id'</span><span class="p">,</span>
+            <span class="na">appkey</span><span class="p">:</span> <span class="s1">'example-app-key'</span>
+        <span class="p">}</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">})</span>
+</code></pre>
+<p>Vtion uses <code>appid</code> and <code>appkey</code>  to allow access to the search API. You can request for your application Id and application Key by sending a mail to <a href="maito:info@vtion.ai">info@vtion.ai</a>.
+Vtion expects <code>appid</code> and <code>appkey</code> to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>appid: example-app-id</code>
+<code>appkey: example-app-key</code></p>
+<h2 id='search-product-feed'>Search product feed</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The search api returns a JSON structured response like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -308,7 +327,47 @@ Vtion expects <code>appid</code> and <code>appkey</code> to be included in all A
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='errors'>Errors</h1>
+</span></code></pre>
+<p>Searches for similar products within the product feed based on an image provided that is not  within the product feed. The results are ordered by how similar they are to the image.</p>
+<h1 id='product-feed'>Product feed</h1>
+<blockquote>
+<p>Sample product feed format in json</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="s2">"10006373783"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="s2">"White Nike shoe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image_link"</span><span class="p">:</span><span class="s2">"http://www.exampleshop.com/product/image/working-boots.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="s2">"http://www.exampleshop.com/product/white-nike-shoe-10006373783.html"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"$71.80"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>A product feed is a file that contains information about all products on your site. We will use this information to train our models.</p>
+<h2 id='supported-format'>Supported Format</h2>
+<p>Only two formats are supported for product feeds</p>
+
+<ol>
+<li>JSON</li>
+<li>CSV</li>
+</ol>
+<h2 id='product-information-to-provide'>Product Information to provide</h2>
+<p>All field names must be in English. Product information should not contain HTML tags or style tags.</p>
+
+<p><strong>id</strong>:  The <code>id</code> is a unique product identifier that represents only one product. Once an <code>id</code> is assigned to a product and imported, it may not be used for a different product, 
+nor can the <code>id</code> for a particular product change. 
+<aside class="notice">
+This field is required for all products in the feed, and cannot be empty/blank.
+</aside></p>
+
+<p><strong>title</strong>: This field is required for all products in the feed, and cannot be empty/blank. The title is the product’s name, typically as it is displayed on the product’s detail page. This will be used as the main text descriptor for a given product.</p>
+
+<p><strong>image_link</strong>: This field is required for all products in the feed, and cannot be empty/blank: The image_link is a URL that specifies a file path to a given product’s image. Ideally, images should be at least 800x800 pixels and under 5MB. The image must have a Content-Type header specified, either image/png, image/gif or image/jpeg.</p>
+
+<p><strong>link</strong>: This field is required for all products in the feed, and cannot be empty/blank. The link is the product’s dedicated detail page. The link is usually, although not necessarily, unique to a given product. The product information on this URL should match the corresponding information provided in your feed. Please specify the protocol (http:// or https://) for all URLs.</p>
+
+<p><strong>price</strong>: This field is optional. It&#39;s the price required for the product</p>
+<h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
@@ -338,6 +397,35 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <td>The request could be parsed, but there was an error with the request body.</td>
 </tr>
 </tbody></table>
+<h1 id='faqs'>FAQs</h1>
+<p><strong>What Image formats can be used for visual search?</strong></p>
+
+<p>Vtion search technology supports most image formats such as .jpeg, .jpg, .png, .webp, .pgm.</p>
+
+<p><strong>What should the size of the images be?</strong></p>
+
+<p>Ideally for optimum result, we recommend you use images around 600 X 600 pixels.  We also accept a minimum size of 100 X 100  pixels for images.</p>
+
+<p><strong>Can Vtion recognise my products?</strong></p>
+
+<p>Yes, our model can be trained to recognize any products.</p>
+
+<p><strong>Can I try this out for free?</strong></p>
+
+<p>Yes, you can try it out on our demo site for free.</p>
+
+<p><strong>As a retail company, what do I need todo to use Vtion?</strong></p>
+
+<p>We have a clear and defined steps for any customers to start using Vtion API on your platform in 24hrs.
+Send us a registration request at  info@vtion.ai
+You will be provided with <code>appid</code> and <code>appkey</code> that you can use to access Vtion api</p>
+
+<p><strong>Do you have a developer documentation?</strong></p>
+
+<p>Yes, we have a comprehensive documentation for <a href="http://api.vtion.ai/docs">developers here</a></p>
+
+<p><strong>How can I register?</strong>
+At the moment, registration is only done by sending us a request at info@vtion.ai</p>
 
       </div>
       <div class="dark-box">
